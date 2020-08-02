@@ -1,0 +1,12 @@
+{
+  "name": "javascript-bootcamp",
+  "version": "1.0.0",
+  "author": "Eric Masiello <eric.j.masiello@gmail.com> (http://synbydesign.com/)",
+  "license": "MIT",
+  "scripts": {
+    "start": "serve"
+  },
+  "devDependencies": {
+    "serve": "^11.3.2"
+  }
+}
