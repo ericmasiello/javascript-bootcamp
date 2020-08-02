@@ -566,7 +566,7 @@ a = "Erika"; // ERROR!!!!! 🚨🚨🚨
 
 ### Use `let` or `const`?
 
-- Perfer `const`
+- Prefer `const`
 - Use `let` only when you need to reassign it
 
 --
@@ -576,6 +576,22 @@ a = "Erika"; // ERROR!!!!! 🚨🚨🚨
 - Both allow reassignment
 - `let` is scoped to "blocks"
 - `var`s are scoped to functions
+
+```javascript
+function someFunction(input) {
+  var var1 = "var1"; // scoped to function
+  let let1 = "let1"; // scoped to nearest block (which is a function)
+  if (input > 4) {
+    var var2 = "var2"; // scoped to function
+    let let2 = "let2"; // scoped to if {} block
+  }
+  
+  console.log(var1); // OKAY!
+  console.log(let1); // OKAY!
+  console.log(var2); // OKAY!
+  console.log(let2); // ERROR! 🚨🚨🚨
+}
+```
 
 --
 
@@ -665,7 +681,7 @@ let sum = myInteger + myFloat;
 
 ### String
 
-Text, a collection of characters.
+Text, a collection of characters
 
 ```javascript
 let firstName = "Eric";
@@ -679,6 +695,31 @@ let fullName = firstName + " " + lastName;
 Note:
 
 This operation is called concatenation
+
+--
+
+### Ways to define strings
+
+```javascript
+const firstName = "Eric";  // double quotes
+const lastName = 'Masiello'; // single quotes
+const middleName = `Jon`; // backticks
+```
+
+--
+
+### Backticks
+
+Allows you to "interpolate" a string (aka fancy concatenation)
+
+```javascript
+
+const name = 'Eric';
+const numberOfAssignments = 3;
+
+// message = 'Hello, Eric. You have 3 assignments';
+const message = `Hello, ${name}. You have ${numberOfAssignments} assignments`;
+```
 
 --
 
@@ -714,6 +755,150 @@ _15 mins_
 2. Add a button labeled "Half" that takes the current score and cuts it in half
 
 _If you finish early, help others around you if they're stuck._
+
+---
+
+## Functions
+
+--
+
+### Declaring a function
+
+Delcare with the `function` keyword, `()`, and a pair of `{}`;
+
+```javascript
+function setClassName() {
+  document.querySelector('#foo').className = 'bar';
+}
+```
+
+--
+
+### Calling a function
+
+```javascript
+function setClassName() {
+  document.querySelector('#foo').className = 'bar';
+}
+
+setClassName(); // this tells the program to run the body of the function
+```
+
+--
+
+### Arrow functions
+
+Similar to `var` vs. `let`, there are some subtle differences with "regular" function declarations and arrow functions
+
+```
+const setClassName = () => {
+  document.querySelector('#foo').className = 'bar';
+};
+
+setClassName();
+```
+
+--
+
+### Parameters and Arguments
+
+Functions allow you to _pass_ values to them to be used within their functino body.
+
+```javascript
+function setCustomClassName(className) { // className is the parameter
+  document.querySelector('#foo').className = className;
+}
+
+setCustomClassName('error'); // 'error' is the argument
+setCustomClassName('warning'); // 'warning' is the argument
+setCustomClassName(''); // '' (empty string) is the argument
+```
+
+--
+
+### Mental model of Arguments and Parameters
+
+```javascript
+function setCustomClassName(className) {
+  // once this function is called with 'error', internally its as if 
+  // the program has inserted the following line of code
+  // var className = 'error';
+  document.querySelector('#foo').className = className;
+}
+
+setCustomClassName('error');
+```
+
+--
+
+### Multiple parameters/arguments
+
+```javascript
+function add(a, b, c) {
+  // a = 2, b = 5, c = 3
+  const sum = a + b + c;
+}
+
+add(2, 5, 3);
+```
+
+--
+
+### Returning a value from a function
+
+Functions can pass a value back to the call site
+
+```javascript
+function add(a, b, c) {
+  const sum = a + b + c;
+  return sum; // returns the value OUT of the function back to where it was called
+}
+
+const result = add(2, 5, 3);
+// result is now 10
+```
+
+--
+
+### Execution Order
+
+The body of a function (code between the `{}`) is not run until the function is called.
+
+```javascript
+function doMath(a, b) {
+  const sum = a + b;
+  return double(sum);
+}
+
+function double(n) {
+  return n * 2;
+}
+
+const result = doMath(2, 4);
+// what is result?
+```
+
+--
+
+### Fancy arrow functions 
+
+Arrow functions support an implicit return when you omit the `{}`
+
+```javascript
+const doMath = (a, b) => {
+  const sum = a + b;
+  return double(sum);
+};
+
+const double = (n) => n * 2; // look ma', no return keyword
+
+const result = doMath(2, 4);
+```
+
+---
+
+## TODO insert an exercise using functions
+
 
 ---
 
