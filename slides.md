@@ -751,10 +751,59 @@ function turnLightsOff() {
 
 _15 mins_
 
-1. Add a button labeled "Double" that takes the current score and doubles it
-2. Add a button labeled "Half" that takes the current score and cuts it in half
+Keep a running total.
+
+// TODO
 
 _If you finish early, help others around you if they're stuck._
+
+---
+
+## Objects
+
+Containers that hold multiple related properties.
+
+```javascript
+const instructor = {
+  name: 'Eric',
+  favoriteLanguage: 'JavaScript',
+  yearsTeaching: 6,
+};
+```
+
+--
+
+### Reading properties of an object
+
+Use the "dot" notation to access properties of an object
+
+```javascript
+const instructor = {
+  name: 'Eric',
+  favoriteLanguage: 'JavaScript',
+  yearsTeaching: 6,
+};
+
+const greeting = 'Hello, ' + insturctor.name;
+const likes = instructor.name + ' likes ' + instructor.favoriteLanguage;
+```
+
+--
+
+Also use dot notation to update a property of an object
+
+```javascript
+
+const instructor = {
+  name: 'Eric',
+  favoriteLanguage: 'JavaScript',
+  yearsTeaching: 6,
+};
+
+instructor.favoriteLanguage = 'CSS';
+
+const likes = instructor.name + ' likes ' + instructor.favoriteLanguage;
+```
 
 ---
 
