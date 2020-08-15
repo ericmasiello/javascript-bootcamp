@@ -3,11 +3,13 @@
 - Install Google Chrome or Firefox
   - https://www.google.com/chrome/
   - or https://www.mozilla.org/en-US/firefox/new/
-- Install "LTS" Node (not Current) https://nodejs.org/en/
+- <del>Install "LTS" Node (not Current) https://nodejs.org/en/</del>
 
 ---
 
-# JavaScript Bootcamp 🥾🥾🥾
+![JavaScript Logo](img/javascript.png)
+
+# Bootcamp
 
 ---
 
@@ -15,28 +17,37 @@
 
 - @ericmasiello
 - Principal Software Engineer @ Vistaprint
-- Front-End Web Development (FEWD) Instructor at General Assembly
+- Front-End Web Development (FEWD), JavaScript 101, and Code In One Day Bootcamp instructor at General Assembly
 - Co-Author of _Mastering React Native_
 
 --
 
 ## Your turn to share 🤗
 
-- Your name
-- Any programming experience? (HTML, JavaScript, CSS, C, etc.)
-- What brought you here today
+- What's your name?
+- Where in the world are you?
+- Do you have any programming experience? (HTML, JavaScript, CSS, Ruby, Java, etc.)
+- What brought you here today?
 
 ---
 
 ## Agenda
 
-TODO
+- JavaScript (JS) background
+- JS in the Browser (& the DOM)
+- Variables & Data Types
+- Objects
+- Control Flow
+- Arrays and Loops
+- Functions
+- Project
+- Bonus: Node
 
 ---
 
 ## Setting expectations
 
-One day is not a lot of time.
+_We're building a foundation_
 
 ---
 
@@ -88,7 +99,7 @@ Note:
 
 --
 
-## Java vs. JavaScript
+### Java vs. JavaScript
 
 Very, very, very different.
 
@@ -104,7 +115,7 @@ Note:
 
 --
 
-## JavaScript vs. Javascript
+### JavaScript vs. Javascript
 
 - Officially, its "JavaScript"
 - In reality, no one cares
@@ -165,11 +176,14 @@ Note:
 
 ```js
 // Create a <p> node
-var pNode = document.createElement("p");
+let pNode = document.createElement("p");
+
 // Create a text node
-var textNode = document.createTextNode("Hello world");
+let textNode = document.createTextNode("Hello world");
+
 // Append the text to <p>
 pNode.appendChild(textNode);
+
 // Append <p>Hello world</p> to <body>
 document.querySelector("body").appendChild(pNode);
 ```
@@ -203,7 +217,7 @@ document.querySelector("body").appendChild(pNode);
 
 ```js
 // returns a single Node
-var titleElement = document.getElementById("title");
+let titleElement = document.getElementById("title");
 ```
 
 --
@@ -223,10 +237,10 @@ var titleElement = document.getElementById("title");
 
 ```js
 // returns a single Node
-var titleElement = document.querySelector("#title");
+let titleElement = document.querySelector("#title");
 
 // returns a single Node, but which one?
-var messageElement = document.querySelector(".message");
+let messageElement = document.querySelector(".message");
 ```
 
 --
@@ -246,10 +260,10 @@ var messageElement = document.querySelector(".message");
 
 ```js
 // returns a NodeList of 2 elements
-var messageElements = document.querySelectorAll(".message");
+let messageElements = document.querySelectorAll(".message");
 
 // returns a NodeList of 3 elements
-var allParagraphElements = document.querySelectorAll("p");
+let allParagraphElements = document.querySelectorAll("p");
 ```
 
 --
@@ -263,7 +277,7 @@ var allParagraphElements = document.querySelectorAll("p");
 
 ### How do we add JavaScript to a webpage?
 
-### `<script></script>`
+`<script>👋👋👋</script>`
 
 --
 
@@ -317,11 +331,11 @@ Like with any language, there are formal rules around how to write it. This is t
 
 ### JavaScript syntax examples
 
-- Semicolon: marks the end of a statment
-- Quotation Marks: a string (of characters)
-- Parentheses: used to define or execute a function
+- Semicolon: marks the end of a statment 👉 `;`
+- Quotation Marks: a string (of characters) 👉 `""`
+- Parentheses: used to define or execute a function 👉 `fn()`
 
-```javascript
+```js
 function illuminateRed() {
   // do stuff
 }
@@ -337,21 +351,17 @@ setupEvents();
 
 ### JavaScript syntax - comments
 
-```javascript
+```js
 // Single Line Comments
 ```
 
-```javascript
+```js
 /*
 Multi
 line
 comments
 */
 ```
-
---
-
-TODO: are there more syntax related slides i can use from the other guy's deck??
 
 --
 
@@ -399,13 +409,13 @@ A `function` whose job is to respond to some user input.
 
 A self-contained set of instructions that can be reusable
 
-```javascript
+```js
 function handleAddTodo() {
-  // code here that picks a card at random
+  // code that adds a new todo to your todo list
 }
 ```
 
-Functions can be easily rerun (e.g. on every click, run these instructions)
+Functions can be easily rerun (e.g. on _every_ click, run these instructions)
 
 --
 
@@ -422,10 +432,10 @@ JS
 
 ```js
 function handleAddTodo() {
-  // code that adds the todo item to your todo list
+  // code that adds a new todo to your todo list
 }
 
-// whenever someone clicks the html tag with an id="addTodo",
+// Whenever someone clicks the html tag with an id="addTodo",
 // run the handleAddTodo function
 document.querySelector("#addTodo").onclick = handleAddTodo;
 ```
@@ -471,9 +481,7 @@ document.querySelector("#addTodo").onclick = handleAddTodo;
 
 ## Traffic light
 
-https://codesandbox.io/s/stop-light-6yw3q
-
-- Click the "fork" button in the top right
+Fork this [Codesandbox](https://codesandbox.io/s/stop-light-6yw3q)
 
 --
 
@@ -497,9 +505,17 @@ _Once you've completed step 2, use the thumbs up reaction on Zoom_
 
 Containers for storing data values.
 
-```javascript
+```js
 let age = 13;
 ```
+
+--
+
+### Eric's lame scoreboard analogy
+
+- Think of a variable like scoreboard in a sporting event.
+- The scoreboard in a game keeps track of the points scored over the course of the game.
+- If we didn't have a scoreboard, we would have no way to know who won the game at the end.
 
 --
 
@@ -509,7 +525,7 @@ let age = 13;
 - We choose the name
 - Variables must only be _declared_ once
 
-```javascript
+```js
 let age;
 var name; // "legacy", we won't be using "var"
 ```
@@ -521,7 +537,7 @@ var name; // "legacy", we won't be using "var"
 - Give our declared variable a value
 - This can happen multiple times
 
-```javascript
+```js
 age = 13;
 ```
 
@@ -529,7 +545,7 @@ age = 13;
 
 ### Variable assignment and declaration
 
-```javascript
+```js
 // Do assignment and declaration separately
 let a;
 a = 22;
@@ -542,7 +558,7 @@ let b = a + 2;
 
 ### Variable reassignment
 
-```javascript
+```js
 // give it an intial value
 let a = "Eric";
 
@@ -556,10 +572,12 @@ a = "Erika";
 
 Allow you to assign a value once
 
-```javascript
-const a = "Eric";
+```js
+let a = "Eric";
+const b = "Jim";
 
-a = "Erika"; // ERROR!!!!! 🚨🚨🚨
+a = "Erika"; // ✅ OKAY ✅
+b = "Mike"; // 🚫 ERROR 🚫
 ```
 
 --
@@ -571,36 +589,12 @@ a = "Erika"; // ERROR!!!!! 🚨🚨🚨
 
 --
 
-### Difference between `var` and `let`
-
-- Both allow reassignment
-- `let` is scoped to "blocks"
-- `var`s are scoped to functions
-
-```javascript
-function someFunction(input) {
-  var var1 = "var1"; // scoped to function
-  let let1 = "let1"; // scoped to nearest block (which is a function)
-  if (input > 4) {
-    var var2 = "var2"; // scoped to function
-    let let2 = "let2"; // scoped to if {} block
-  }
-  
-  console.log(var1); // OKAY!
-  console.log(let1); // OKAY!
-  console.log(var2); // OKAY!
-  console.log(let2); // ERROR! 🚨🚨🚨
-}
-```
-
---
-
-### Name variables using "camelcase"
+### Name variables using "camelCase"
 
 - Start with lowercase letter
 - Each new word is capitalized
 
-```javascript
+```js
 let numberOfStudents = 20;
 ```
 
@@ -609,8 +603,8 @@ let numberOfStudents = 20;
 ### Variable naming rules (syntax)
 
 - Names can contain letters, digits, underscores, and dollar signs
-- Names must begin with a letter, \$, or \_
-- Names are case sensitive (y and Y are different variables)
+- Names must begin with a letter, `$`, or `_`
+- Names are case sensitive (`y` and `Y` are different variables)
 - Reserved words (e.g. `function` or `while`) cannot be used as names
 
 ---
@@ -625,7 +619,7 @@ let numberOfStudents = 20;
 let numberOfStudents = 20;
 ```
 
-- JavaScript reservered word: `var`
+- JavaScript reservered word: `let`
 - Name: `numberOfStudents`
 - Value: `20`
 
@@ -639,13 +633,13 @@ What can those _values_ be??
 
 ### JavaScript data types
 
-- _Boolean_
+- Boolean
+- Number
+- String
+- Object\*
 - Null
 - Undefined
-- _Number_
-- _String_
 - Symbol
-- Object\*
 
 \* includes Dates, Arrays, Regular Expressions, Functions, and more
 
@@ -653,7 +647,7 @@ What can those _values_ be??
 
 ### Number
 
-```javascript
+```js
 // We call this type of number an "integer"
 let myInteger = 10;
 
@@ -681,15 +675,15 @@ let sum = myInteger + myFloat;
 
 ### String
 
-Text, a collection of characters
+Text or any collection of characters
 
-```javascript
-let firstName = "Eric";
+```js
+const firstName = "Eric";
 
-let lastName = "Masiello";
+const lastName = "Masiello";
 
-// fullName = 'Eric Masiello'
-let fullName = firstName + " " + lastName;
+const fullName = firstName + " " + lastName;
+// fullName = "Eric Masiello"
 ```
 
 Note:
@@ -700,8 +694,8 @@ This operation is called concatenation
 
 ### Ways to define strings
 
-```javascript
-const firstName = "Eric";  // double quotes
+```js
+const firstName = "Eric"; // double quotes
 const lastName = 'Masiello'; // single quotes
 const middleName = `Jon`; // backticks
 ```
@@ -712,13 +706,12 @@ const middleName = `Jon`; // backticks
 
 Allows you to "interpolate" a string (aka fancy concatenation)
 
-```javascript
+```js
+const name = "Eric";
+const count = 3;
 
-const name = 'Eric';
-const numberOfAssignments = 3;
-
-// message = 'Hello, Eric. You have 3 assignments';
-const message = `Hello, ${name}. You have ${numberOfAssignments} assignments`;
+const message = `Hi, ${name}. You have ${count} assignments`;
+// message = "Hi, Eric. You have 3 assignments";
 ```
 
 --
@@ -727,82 +720,436 @@ const message = `Hello, ${name}. You have ${numberOfAssignments} assignments`;
 
 True or False
 
-```javascript
-let lightOn = true;
+```js
+let todoComplete = false;
 
-function turnLightsOff() {
-  lightOn = false;
+function completeTodo() {
+  todoComplete = true;
 }
+
+// (1) Initialy, todoComplete is false
+// (2) Next, we call the completeTodo function
+completeTodo();
+// (3) Now, todoComplete is true
 ```
 
 ---
 
-![GeneralAssemb.ly](img/code_along.png)
+![GeneralAssemb.ly](img/exercise_icon_md.png)
 
-## Score keeper
+## Calculator
 
-[CodePen](https://codepen.io/ericmasiello/pen/VWXWEB?editors=1010)
-
-- Fork this on Codepen
+Fork this [Codesandbox](https://codesandbox.io/s/calculator-p6jwe)
 
 --
 
-## Score keeper Assignment
+## Calculator Assignment
 
 _15 mins_
 
-Keep a running total.
+- Use the variable declared at the top called `result` to track the value of the calculator
+- Add click event handlers to each button that adds/subtracts the appropriate value
+- Clicking the `0` button should reset the calculator to `0`
+- After clicking any button, update the `#result` div with the current value
 
-// TODO
-
-_If you finish early, help others around you if they're stuck._
+```js
+document.getElementById("result").innerHTML = result;
+```
 
 ---
 
 ## Objects
 
-Containers that hold multiple related properties.
+--
 
-```javascript
+### Objects vs. simple data types
+
+Containers that hold multiple related properties of any data type
+
+```js
+// 3 variables
+const instructorName = "Eric";
+const instructorcourse = "JavaScript";
+const instructorYearsTeaching = 6;
+
+// *OR* 1 object variable that contains related values
 const instructor = {
-  name: 'Eric',
-  favoriteLanguage: 'JavaScript',
+  name: "Eric",
+  course: "JavaScript",
   yearsTeaching: 6,
 };
 ```
 
 --
 
-### Reading properties of an object
+### Accessing properties of an object
 
-Use the "dot" notation to access properties of an object
+Use the "dot" notation to access (read) properties of an object
 
-```javascript
+```js
 const instructor = {
-  name: 'Eric',
-  favoriteLanguage: 'JavaScript',
+  name: "Eric",
+  course: "JavaScript",
   yearsTeaching: 6,
 };
 
-const greeting = 'Hello, ' + insturctor.name;
-const likes = instructor.name + ' likes ' + instructor.favoriteLanguage;
+const greeting = "Hello, " + insturctor.name;
+// greeting = "Hello, Eric"
 ```
 
 --
 
-Also use dot notation to update a property of an object
+### Modifying properties of an object
 
-```javascript
+Also use dot notation to update (write) a property of an object
 
+```js
 const instructor = {
-  name: 'Eric',
-  favoriteLanguage: 'JavaScript',
+  name: "Eric",
+  course: "JavaScript",
   yearsTeaching: 6,
 };
 
-instructor.favoriteLanguage = 'CSS';
+let likes = "He teaches " + instructor.course;
+// likes = "He teaches JavaScript"
 
-const likes = instructor.name + ' likes ' + instructor.favoriteLanguage;
+instructor.course = "CSS";
+
+likes = "He teaches " + instructor.course;
+// likes = "He teaches CSS"
+```
+
+---
+
+### Quick aside
+
+One commonly used technique for debugging is `console.log()`
+
+```js
+let name = "Eric";
+let obj = { a: "A", b: "B" };
+
+console.log(name); // prints "Eric"
+console.log(obj); // prints "{ a: "A", b: "B" }"
+```
+
+---
+
+## Control Flow
+
+if _this is true_, then do _that_. Otherwise, do _this other thing_.
+
+--
+
+### Handling Control Flow
+
+- Code needs to take branching paths based on different conditions
+- Typically handled with `if` / `else` statements
+
+```js
+const day = "Tuesday";
+let classToday = false;
+
+if (day === "Monday") {
+  classToday = true;
+}
+
+// what is the value of classToday?
+```
+
+--
+
+### Syntax
+
+- Use the `if` keyword followed by parentheses
+- Inside the parentheses, check the condition is "truthy"
+
+```js
+
+const userIsAdministrator = true;
+
+if (userIsAdministrator === true) {
+  console.log("You have admin rights!");
+}
+
+const totalSandiches = 5;
+
+if (totalSandwiches >= 4) {
+  console.log("You have a lot of sandwiches!");
+}
+
+```
+
+--
+
+### Common Conditional Operators
+
+| Operator |  Description   |      Example |
+| -------- | :------------: | -----------: |
+| `===`      |    Equal    | `(a === false)` |
+| `!==`      |  Not Equal   | `(a !== true)` |
+| `>`      | Greater than | `(x > 10)` |
+| `>=`      |    Greater than or equal    | `(x >= 5))` |
+| `<`      |   Lesser than    | `(y < 3)` |
+| `<=`      |   Lesser than or equal    | `(y <= 2)` |
+
+--
+
+### `if`, `else if`, and `else`
+
+Optionally use `else if` and `else` to handle other branches of code
+
+```js
+let classToday;
+const day = "Tuesday";
+
+if (day === "Sunday") {
+  classToday = false;
+} else if (day === "Saturday") {
+  classToday = false;
+} else {
+  classToday = true;
+}
+
+// what is the value of classToday?
+```
+
+---
+
+![GeneralAssemb.ly](img/exercise_icon_md.png)
+
+## Employee Object
+
+Fork this [Codesandbox](https://codesandbox.io/s/employee-object-by9ez?file=/README.md)
+
+> You and your partner Eric are building a contact form for new employees.
+> Eric wrote some code but decided to leave the rest to you.
+> Thankfully, he left some instructions...
+
+--
+
+- Declare an object named `employee` that will store all the data we collect
+- The `emplopyee` object will have 3 properties, `name`, `address`, and `favoriteColor`
+- Clicking the submit button should call the function `handleSubmit`
+- `handleSubmit` must update `employee` properies with the values from the `<input />` fields
+- `handleSubmit` must call `renderEmployeeDetails()` as the last thing it does
+- **BONUS**: Eric dislikes the color `"orange"`. If the user types `"orange"` as their favorite color, reassign it to `"green"` and console log the message `"I dont like orange."`
+
+---
+
+## Arrays and Loops
+
+--
+
+### What is an Array?
+
+- Special type of `Object` used to store a collection of data
+- Ofter referred to as a "list" or "collection"
+- Values are comma separted
+- Use square brackets to create an array `[]`
+
+--
+
+### Assigning an array
+
+```js
+const names = ["Bryan", "Kyril", "Mike", "PJ"];
+const favoriteNumbers = [8, 3, 22, 12];
+
+console.log(names); // ["Bryan", "Kyril", "Mike", "PJ"]
+console.log(favoriteNumbers); // [8, 3, 22, 12]
+```
+
+--
+
+### Accessing individual values in an array
+
+- Arrays are `0` (zero) indexed
+- The first element in the array can be accessed via `variableName[0]`.
+
+```js
+const names = ["Bryan", "Kyril", "Mike", "PJ"];
+
+console.log(names[0]); // "Bryan"
+console.log(names[3]); // "PJ"
+console.log(names.length); // 4
+```
+
+--
+
+### Adding values to an array
+
+Add elements to the _end_ of an array using `.push()`
+
+```js
+const names = ["Bryan", "Kyril", "Mike", "PJ"];
+console.log(names.length); // 4
+
+names.push("Eric");
+
+console.log(names[4]); // "Eric"
+console.log(names.length); // 5
+```
+
+--
+
+### Adding values to an array
+
+Add elements to the _beginning_ of an array using `.unshift()`
+
+```js
+const names = ["Bryan", "Kyril", "Mike", "PJ"];
+console.log(names.length); // 4
+console.log(names[0]); // "Bryan"
+
+names.unshift("Eric");
+
+console.log(names[0]); // "Eric"
+console.log(names.length); // 5
+```
+
+--
+
+### Removing values from an array
+
+Remove elements at the _end_ of an array using `.pop()`
+
+```js
+const names = ["Bryan", "Kyril", "Mike", "PJ"];
+console.log(names.length); // 4
+
+names.pop();
+
+console.log(names.length); // 3
+console.log(names); // ["Bryan", "Kyril", "Mike"];
+```
+
+--
+
+### Removing values from an array
+
+Remove elements at the _beginning_ of an array using `.shift()`
+
+```js
+const names = ["Bryan", "Kyril", "Mike", "PJ"];
+console.log(names.length); // 4
+
+names.shift();
+
+console.log(names.length); // 3
+console.log(names); // ["Kyril", "Mike", "PJ"];
+console.log(names[0]); // "Kyril"
+```
+
+--
+
+### Arrays can hold any value type
+
+```js
+const employees = [
+  { name: "Eric Masiello", yearsInJob: 4 },
+  { name: "Jennifer Yan", yearsInJob: 12 },
+];
+
+const numberPairs = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+];
+```
+
+---
+
+![GeneralAssemb.ly](img/exercise_icon_md.png)
+
+## Things I Learned Today
+
+Fork this [Codesandbox](https://codesandbox.io/s/items-learned-arrays-qslny?file=/README.md)
+
+---
+
+## 🔄 Loops 🔄
+
+--
+
+## Why loops?
+
+- Loops allow you to perform a series of operations while certain conditions are true
+- Often used to do some action for each item in an array
+- There are multiple ways to express loops in JavaScript
+
+--
+
+### Average score using a `for-of` loop
+
+For each value in an array, a `for-of` loop creates a temporary variable
+to store the current value of the array.
+
+```js
+const studentScores = [90, 85, 76, 92, 65];
+let scoreSum = 0;
+
+for (const score of studentScores) {
+  scoreSum = scoreSum + score;
+}
+// scoreSum = 408
+
+const average = scoreSum / studentScores.length;
+// average = 81.6
+```
+
+--
+
+### Average score using a `for` loop
+
+A traditional `for` loop uses the _index_ to access values
+e.g. `studentScores[0]`
+
+```js
+const studentScores = [90, 85, 76, 92, 65];
+let scoreSum = 0;
+
+// Note: must use `let`, not `const`
+for (let i = 0; i < studentScores.length; i++) {
+  scoreSum = scoreSum + studentScores[i];
+}
+// scoreSum = 408
+
+const average = scoreSum / studentScores.length;
+// average = 81.6
+```
+
+[Why you cannot use `const` in a `for` loop](https://medium.com/@mautayro/es6-variable-declaration-for-loops-why-const-works-in-a-for-in-loop-but-not-in-a-normal-a200cc5467c2)
+
+--
+
+### `while` loop
+
+While loops do not directly operate on arrays like a `for` or `for-of` loop
+
+```js
+let counter = 0;
+
+while (counter < 10) {
+  console.log(counter);
+  counter = counter + 1;
+}
+
+// What does this program console log out?
+```
+
+--
+
+### ⚠️⚠️ Beware of infinite loops! ⚠️⚠️
+
+```js
+let counter = 0;
+
+while (counter < 10) {
+  console.log(counter);
+}
+
+// What's wrong with this?
 ```
 
 ---
@@ -815,9 +1162,9 @@ const likes = instructor.name + ' likes ' + instructor.favoriteLanguage;
 
 Delcare with the `function` keyword, `()`, and a pair of `{}`;
 
-```javascript
+```js
 function setClassName() {
-  document.querySelector('#foo').className = 'bar';
+  document.querySelector("#foo").className = "bar";
 }
 ```
 
@@ -825,64 +1172,82 @@ function setClassName() {
 
 ### Calling a function
 
-```javascript
+Call a function by using the function's name followed by `()`
+
+```js
 function setClassName() {
-  document.querySelector('#foo').className = 'bar';
+  document.querySelector("#foo").className = "bar";
 }
 
-setClassName(); // this tells the program to run the body of the function
-```
-
---
-
-### Arrow functions
-
-Similar to `var` vs. `let`, there are some subtle differences with "regular" function declarations and arrow functions
-
-```
-const setClassName = () => {
-  document.querySelector('#foo').className = 'bar';
-};
-
+// this tells the program to run the body of the function
 setClassName();
 ```
 
 --
 
-### Parameters and Arguments
+### Understanding execution order
 
-Functions allow you to _pass_ values to them to be used within their functino body.
+```js
+console.log("a");
 
-```javascript
-function setCustomClassName(className) { // className is the parameter
-  document.querySelector('#foo').className = className;
+function logB() {
+  console.log("b");
 }
 
-setCustomClassName('error'); // 'error' is the argument
-setCustomClassName('warning'); // 'warning' is the argument
-setCustomClassName(''); // '' (empty string) is the argument
+console.log("c");
+logB();
+logD();
+
+function logD() {
+  console.log("d");
+}
+
+logB();
+console.log("e");
+```
+
+What would be console logged to the screen?
+
+--
+
+### Parameters and Arguments
+
+- Functions allow you to _pass_ values to them that are scoped to their function body
+- "parameters" are the variable names that appear within the functions `()`
+- "arguments" are the _actual_ values passed to the functions
+
+```js
+function setCustomClassName(newClassName) {
+  // newClassName is the parameter
+  document.querySelector("#foo").className = newClassName;
+}
+
+setCustomClassName("error"); // "error" is the argument
+setCustomClassName("warning"); // "warning" is the argument
+setCustomClassName(""); // "" (empty string) is the argument
 ```
 
 --
 
 ### Mental model of Arguments and Parameters
 
-```javascript
-function setCustomClassName(className) {
-  // once this function is called with 'error', internally its as if 
-  // the program has inserted the following line of code
-  // var className = 'error';
-  document.querySelector('#foo').className = className;
+```js
+function setCustomClassName(newClassName) {
+  // once this function is called with "error", internally its as if
+  // the program has inserted the following line of code:
+
+  // var newClassName = "error";
+  document.querySelector("#foo").className = newClassName;
 }
 
-setCustomClassName('error');
+setCustomClassName("error");
 ```
 
 --
 
 ### Multiple parameters/arguments
 
-```javascript
+```js
 function add(a, b, c) {
   // a = 2, b = 5, c = 3
   const sum = a + b + c;
@@ -895,25 +1260,29 @@ add(2, 5, 3);
 
 ### Returning a value from a function
 
-Functions can pass a value back to the call site
+- Functions can pass a value back to the caller using the `return` keyword
+- **Note:** as soon as a function executes a `return` statement, it stops running any additional code in the function
 
-```javascript
+```js
 function add(a, b, c) {
   const sum = a + b + c;
-  return sum; // returns the value OUT of the function back to where it was called
+
+  // returns the value OUT of the function back
+  // to where it was called. i.e. add(2, 5, 3)
+  return sum;
 }
 
 const result = add(2, 5, 3);
-// result is now 10
+// result = 10
 ```
 
 --
 
-### Execution Order
+### Quick Quiz
 
-The body of a function (code between the `{}`) is not run until the function is called.
+Follow the exeuction order
 
-```javascript
+```js
 function doMath(a, b) {
   const sum = a + b;
   return double(sum);
@@ -924,22 +1293,43 @@ function double(n) {
 }
 
 const result = doMath(2, 4);
+
 // what is result?
 ```
 
 --
 
-### Fancy arrow functions 
+### Arrow functions
+
+- Arrow functions are another way of expressing functions
+- Similar to `var` vs. `let`, they have some subtle differences from "regular" function declarations
+
+```js
+
+// function setCustomClassName(newClassName) {
+//   document.querySelector("#foo").className = newClassName;
+// }
+
+const setCustomClassName = () => {
+  document.querySelector("#foo").className = "bar";
+};
+
+setCustomClassName();
+```
+
+--
+
+### Fancy arrow functions
 
 Arrow functions support an implicit return when you omit the `{}`
 
-```javascript
+```js
 const doMath = (a, b) => {
   const sum = a + b;
   return double(sum);
 };
 
-const double = (n) => n * 2; // look ma', no return keyword
+const double = (n) => n * 2; // look ma', no `return` keyword
 
 const result = doMath(2, 4);
 ```
@@ -947,7 +1337,6 @@ const result = doMath(2, 4);
 ---
 
 ## TODO insert an exercise using functions
-
 
 ---
 
