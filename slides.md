@@ -3,7 +3,6 @@
 - Install Google Chrome or Firefox
   - https://www.google.com/chrome/
   - or https://www.mozilla.org/en-US/firefox/new/
-- <del>Install "LTS" Node (not Current) https://nodejs.org/en/</del>
 
 ---
 
@@ -1163,7 +1162,7 @@ while (counter < 10) {
 Delcare with the `function` keyword, `()`, and a pair of `{}`;
 
 ```js
-function setClassName() {
+function setClassNameAsBar() {
   document.querySelector("#foo").className = "bar";
 }
 ```
@@ -1175,12 +1174,12 @@ function setClassName() {
 Call a function by using the function's name followed by `()`
 
 ```js
-function setClassName() {
+function setClassNameAsBar() {
   document.querySelector("#foo").className = "bar";
 }
 
 // this tells the program to run the body of the function
-setClassName();
+setClassNameAsBar();
 ```
 
 --
@@ -1210,15 +1209,15 @@ What would be console logged to the screen?
 
 --
 
-### Parameters and Arguments
+### Parameters &amp; Arguments
 
 - Functions allow you to _pass_ values to them that are scoped to their function body
-- "parameters" are the variable names that appear within the functions `()`
-- "arguments" are the _actual_ values passed to the functions
+- _Parameters_ are the variable names that appear within the function's `()`
+- _Arguments_ are the _actual_ values passed to the function
 
 ```js
 function setCustomClassName(newClassName) {
-  // newClassName is the parameter
+  // `newClassName` is a parameter of `setCustomClassName`
   document.querySelector("#foo").className = newClassName;
 }
 
@@ -1229,7 +1228,7 @@ setCustomClassName(""); // "" (empty string) is the argument
 
 --
 
-### Mental model of Arguments and Parameters
+### A rough mental model of arguments and parameters
 
 ```js
 function setCustomClassName(newClassName) {
@@ -1321,22 +1320,16 @@ setCustomClassName();
 
 ### Fancy arrow functions
 
-Arrow functions support an implicit return when you omit the `{}`
+If the body of your function is a one line expression, you can omit the `return` and `{}`
 
 ```js
-const doMath = (a, b) => {
-  const sum = a + b;
-  return double(sum);
+const doubleA = (n) => {
+  return n * 2;
 };
 
-const double = (n) => n * 2; // look ma', no `return` keyword
 
-const result = doMath(2, 4);
+const doubleB = (n) => n * 2; // no `return` or `{}` needed
 ```
-
----
-
-## TODO insert an exercise using functions
 
 ---
 
@@ -1371,7 +1364,6 @@ node add.js 3 4
 
 - _Books_
 - [You Don't Know JS: Up & Going](http://shop.oreilly.com/product/0636920039303.do)
-- [HTML and CSS: Design and Build Websites](https://www.amazon.com/HTML-CSS-Design-Build-Websites/dp/1118008189/ref=sr_1_2?ie=UTF8&qid=1502034868&sr=8-2&keywords=html+css+javascript)
 - _Online_
 - [Code Academy (Free)](https://www.codecademy.com/)
 - [Beginner JavaScript](https://beginnerjavascript.com/)
