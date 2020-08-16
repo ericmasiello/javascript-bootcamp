@@ -39,7 +39,6 @@
 - Control Flow
 - Arrays and Loops
 - Functions
-- Project
 - Bonus: Node
 
 ---
