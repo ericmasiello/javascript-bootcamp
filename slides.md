@@ -3,6 +3,8 @@
 - Install Google Chrome or Firefox
   - https://www.google.com/chrome/
   - or https://www.mozilla.org/en-US/firefox/new/
+- Sign up for Codesandbox
+  - https://codesandbox.io/
 
 ---
 
