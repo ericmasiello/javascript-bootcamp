@@ -318,6 +318,10 @@ Or use the `defer` attribute and put the `script` element anywhere
 
 ---
 
+## Break ☕️
+
+---
+
 ## Syntax
 
 "...set of rules that defines the combinations of symbols that are considered to be a correctly structured \[code\] in that language."
@@ -758,6 +762,11 @@ document.getElementById("result").innerHTML = result;
 
 ---
 
+## Break 🍕
+
+---
+
+
 ## Objects
 
 --
@@ -1057,6 +1066,10 @@ const numberPairs = [
   [5, 6],
 ];
 ```
+
+---
+
+## Break ☕️
 
 ---
 
