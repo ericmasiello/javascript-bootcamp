@@ -176,13 +176,10 @@ Note:
 
 ```js
 // Create a <p> node
-let pNode = document.createElement("p");
+let p = document.createElement("p");
 
-// Create a text node
-let textNode = document.createTextNode("Hello world");
-
-// Append the text to <p>
-pNode.appendChild(textNode);
+// Replaces the content of the p -> <p>Hello World</p>
+p.textContent = "Hello World";
 
 // Append <p>Hello world</p> to <body>
 document.querySelector("body").appendChild(pNode);
