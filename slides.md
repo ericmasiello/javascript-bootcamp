@@ -51,6 +51,10 @@ _We're building a foundation_
 
 ---
 
+## No 🥩s Quizing
+
+---
+
 ## What is JavaScript?
 
 - Insanely popular
@@ -163,9 +167,19 @@ Note:
 
 --
 
-## DOM: Document Object Model
+## Key Concepts
 
-> Essentially, the DOM is an internal data structure managed by web browsers that represents what is in the web page. It takes **HTML**, **CSS**, and instructions written in **JavaScript** to decide what it should display at any moment.
+1. The DOM is a t⎵⎵⎵ data structure.
+2. What 3 technologies can affect the DOM and thus what is rendered on screen?
+3. The browser can call custom JavaScript with a `on⎵l⎵⎵k` event handler.
+
+--
+
+## Key Concepts: Answers
+
+1. The DOM is a _tree_ data structure.
+2. HTML, CSS, JavaScript
+3. The browser can call custom JavaScript with a `onclick` event handler.
 
 ---
 
@@ -270,6 +284,22 @@ let allParagraphElements = document.querySelectorAll("p");
 - [Form Validation](https://formvalidation.io/guide/plugins/bootstrap/)
 - [Dynamic Navigation](https://generalassemb.ly/education/digital-marketing)
 
+--
+
+## Key Concepts
+
+1. When communicating with the DOM, what is the name of the JavaScript object we always start with? e.g. `???.querySelector()`
+2. What is the difference between `querySelector()` and `getElementById`?
+3. When looking up an element by id using `querySelector`, what special character must preface the id?
+
+--
+
+## Key Concepts: Answers
+
+1. `document` e.g. `document.querySelector` or `document.getElementById`
+2. `getElementById` only allows you to look up elements by an `id`. `querySelector` is more flexible in that it can be used to look up any DOM element by id, class name, or any other valid CSS selector.
+3. `#` e.g. `document.querySelector('#someId')`
+
 ---
 
 ### How do we add JavaScript to a webpage?
@@ -342,7 +372,8 @@ function illuminateRed() {
 }
 
 function setupEvents() {
-  document.getElementById("stopButton").onclick = illuminateRed;
+  document.getElementById("stopButton")
+    .addEventListener('click', illuminateRed);
 }
 
 setupEvents();
@@ -438,7 +469,42 @@ function handleAddTodo() {
 
 // Whenever someone clicks the html tag with an id="addTodo",
 // run the handleAddTodo function
-document.querySelector("#addTodo").onclick = handleAddTodo;
+document.querySelector("#addTodo")
+  .addEventListener('click', handleAddTodo);
+```
+
+--
+
+## Key Concepts
+
+1. Describe what this code does:
+```js
+document.querySelector("#addTodo");
+```
+
+2. What reserved word is used before declaring a function in JavaScript?
+3. Describe relationship between events (e.g. `'click'`) and event handlers/functions?
+4. You can associate an event to a function using `.ad⎵⎵ve⎵⎵L⎵s⎵en⎵r()`
+
+--
+
+## Key Concepts: Answers
+
+1. Queries the DOM for an element with an id of "addTodo" (e.g. `<div id="addTodo"></div>`)
+```js
+document.querySelector("#addTodo");
+```
+2. `function` e.g.
+```js
+function handleClick() {
+    // ...
+}
+```
+3. Events such as `click` on particular DOM elements can be handled with custom code. This handling is done by a custom function.
+4. `addEventListener`
+```js
+document.getElementById('someId')
+    .addEventListener('click', handleClick);
 ```
 
 ---
@@ -475,6 +541,142 @@ document.querySelector("#addTodo").onclick = handleAddTodo;
 --
 
 <img src="img/js/step6.png" style="border: 0; box-shadow: none;" alt="How JS Works">
+
+--
+ Now let's write some code...
+--
+
+<img src="img/js/step1.png" style="border: 0; box-shadow: none; height: 300px" alt="How JS Works">
+
+```html
+<h1>World's Coolest Todo List</h1>
+<input type="text" id="todo" />
+<button id="addButton">Add</button>
+<div id="todos"></div>
+```
+```js
+function addTodo() {
+  // ...
+}
+
+document.querySelector("#addButton")
+  .addEventListener('click', addTodo);
+```
+
+--
+
+<img src="img/js/step2.png" style="border: 0; box-shadow: none;" alt="How JS Works">
+
+--
+
+<img src="img/js/step3.png" style="border: 0; box-shadow: none;" alt="How JS Works">
+
+```js
+function addTodo() {
+  const todoInputElement = document.querySelector("#todo");
+  const todoValue = todoInputElement.value;
+}
+
+document.querySelector("#addButton")
+  .addEventListener('click', addTodo);
+```
+
+--
+
+<img src="img/js/step4.png" style="border: 0; box-shadow: none;" alt="How JS Works">
+
+```js
+function addTodo() {
+  const todoInputElement = document.querySelector("#todo");
+  const todoValue = todoInputElement.value;
+  
+  const todosList = document.querySelector("#todos");
+  todosList.append(todoValue);
+}
+
+document.querySelector("#addButton")
+  .addEventListener('click', addTodo);
+```
+
+--
+
+<img src="img/js/step5.png" style="border: 0; box-shadow: none; height: 300px" alt="How JS Works">
+
+```js
+function addTodo() {
+  const todoInputElement = document.querySelector("#todo");
+  const todoValue = todoInputElement.value;
+  
+  const todosList = document.querySelector("#todos");
+  todosList.append(todoValue);
+  
+  todoInputElement.value = "";
+}
+
+document.querySelector("#addButton")
+  .addEventListener('click', addTodo);
+```
+
+--
+
+<img src="img/js/step6.png" style="border: 0; box-shadow: none;" alt="How JS Works">
+
+--
+
+## Key Concepts
+
+1. Describe what this code does:
+```js
+document.querySelector("#addButton")
+    .addEventListener('click', addTodo);
+```
+
+2. The following allows you to extract the content a user typed in from a text field:
+```js
+document.querySelector('#todo').⎵⎵l⎵e
+```
+3. The following code will cause an error. Identify 2 problems with it:
+
+```js
+function handleTodo() {
+  // does stuff...
+}
+
+document.querySelector("addButton")
+  .addEventListener('click', addTodo);
+```
+
+--
+
+## Key Concepts: Answers
+
+1. This code finds an element in the DOM with an id of addButton. It then associates a `click` listener to the function `addTodo` such that whenever the user clicks on the element, it will call `addTodo`.
+```js
+document.querySelector("#addButton")
+    .addEventListener('click', addTodo);
+```
+2. `value`
+```js
+document.querySelector('#todo').⎵⎵l⎵e // value
+```
+
+-- 
+
+## Key Concepts: Answers (Continued)
+
+3 The following code will cause an error. Identify 2 problems with it:
+
+```js
+function handleTodo() {
+  // does stuff...
+}
+
+// #1. Missing "#", should be #addButton
+document.querySelector("addButton")
+  // #2. function is called handleTodo, not addTodo
+  .addEventListener('click', addTodo); 
+```
+
 
 ---
 
@@ -734,6 +936,37 @@ completeTodo();
 // (3) Now, todoComplete is true
 ```
 
+--
+
+## Key Concepts
+
+1. What keyword is necessary to _declare_ a variable that is reassignable?
+2. What operator is used for appending two strings together?
+3. What is wrong with this code? How would you fix it?
+```js
+let foo;
+let foo = "bar";
+```
+4. What keyword is used to _declare_ a varaible that cannot be reassigned?
+
+
+--
+
+## Key Concepts: Answers
+1. `let` or `var`
+2. `+`
+```js
+"foo" + "bar"
+```
+3. What is wrong with this?
+```js
+let foo;
+// can only delcare a variable once
+// remove `let` below
+let foo = "bar";
+```
+4. `const`
+
 ---
 
 ![GeneralAssemb.ly](img/exercise_icon_md.png)
@@ -838,6 +1071,38 @@ let obj = { a: "A", b: "B" };
 console.log(name); // prints "Eric"
 console.log(obj); // prints "{ a: "A", b: "B" }"
 ```
+--
+
+## Key Concepts
+
+1. Fill in the missing syntax
+```js
+// fix me!
+const employee ⎵ {
+    name⎵ "Eric"⎵
+    yearsTeaching⎵ 6⎵
+};
+```
+2. How do I access/read the `name` property of an object?
+```js
+console.log(employee⎵name); // fix me!
+```
+
+--
+
+## Key Concepts: Answers
+
+1. Fill in the missing syntax
+```js
+const employee = {
+    name: "Eric",
+    yearsTeaching: 6,
+};
+```
+2. How do I access/read the `name` property of an object?
+```js
+console.log(employee.name);
+```
 
 ---
 
@@ -918,6 +1183,32 @@ if (day === "Sunday") {
 }
 
 // what is the value of classToday?
+```
+
+--
+
+## Key Concepts
+
+1. What is the difference between `=` and `===`? When do you use one versus the other?
+2. When using an `if` statement, are `else` or `else if`s always required?
+3. Fix this code so that the `if` block only evaluates if `y` is less than or equal to `2`
+```js
+if (y ⎵⎵ 2) { // fix me
+  // do something interesting...
+}
+```
+
+--
+
+## Key Concepts: Answers
+
+1. `=` is used for assignment but `===` is used to compare values
+2. No. `else` and `else if`s are optional.
+3. Solution:
+```js
+if (y <= 2) {
+  // do something interesting...
+}
 ```
 
 ---
@@ -1064,6 +1355,33 @@ const numberPairs = [
 ];
 ```
 
+--
+
+## Key Concepts
+
+1. Declare an array named `strings` with two items: `'hello'` and `'world'`
+2. Given the above array `strings`, how would you access the 2nd item (i.e. `'world'`)?
+3. What function/method is used on an array to add an item at the end?
+```js
+items.⎵u⎵⎵("new value");
+```
+
+--
+
+## Key Concepts: Answers
+
+1. Declare an array named `strings` with two items: `'hello'` and `'world'`:
+```js
+const strings = ["hello", "world"];
+```
+2. Access the second item:
+```js
+strings[1]; // => "world"
+```
+3. Add an item at the end of an array:
+```js
+items.push("new value");
+```
 ---
 
 ## Break ☕️
@@ -1160,6 +1478,44 @@ while (counter < 10) {
 }
 
 // What's wrong with this?
+```
+--
+
+## Key Concepts
+
+Describe what this block of code does:
+
+```js
+const todosElement = document.querySelector("#todos");
+const todoItems = ["HTML", "CSS", "JavaScript"];
+
+for (const item of todoItems) {
+  todosElement.append(item + ", ");
+}
+```
+
+--
+
+## Key Concepts: Answers
+
+```js
+// declare a const that references the DOM element:
+// <div id="todos"></div>
+const todosElement = document.querySelector("#todos");
+// declare and assign a const todoItems with 3 strings
+const todoItems = ["HTML", "CSS", "JavaScript"];
+
+// iterate through each item in the todoItems array
+// assigning each value to the const item, one by one
+for (const item of todoItems) {
+  // for each item (e.g. "HTML", "CSS", etc.), append the 
+  // string to the <div id="todos"></div>
+  todosElement.append(item + ", ");
+}
+
+// Now #todos looks like this:
+// <div id="todos">HTML, CSS, JavaScript, </div>
+
 ```
 
 ---
@@ -1340,6 +1696,42 @@ const doubleA = (n) => {
 
 
 const doubleB = (n) => n * 2; // no `return` or `{}` needed
+```
+
+--
+
+## Key Concepts
+
+1. What is the value of `b` given the following code block?
+```js
+function add(a, b, c) {
+    // ...
+}
+add(2, 5, 3);
+```
+2. How do you call a function?
+3. What does the `return` keyword achieve? Is it always required within a function?
+
+
+--
+
+## Key Concepts: Answers
+
+1. `b` is equal to `5` within the `{...}` of the `add` function
+```js
+function add(a, b, c) {
+    // ...
+}
+add(2, 5, 3);
+```
+2. You call or _invoke_ a function by using the `()` e.g. `add()`
+3. The `return` keyword is optional. Whatever value is returned effectively replaces the function invocation:
+```js
+function weirdMath(a, b, c) {
+    return a * 2 + b * 3 - c;
+}
+const result = weirdMath(2, 5, 3);
+// const result = 16
 ```
 
 ---
